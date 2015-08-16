@@ -4,7 +4,8 @@
   "description": "A matrix analyzer that transforms one matrix to another based on rules",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "start": "node ./src/index.js",
+    "test": "mocha --compilers js:mocha-traceur --colors --reporter landing -w ./test/*.js"
   },
   "repository": {
     "type": "git",
