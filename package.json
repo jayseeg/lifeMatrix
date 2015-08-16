@@ -1,0 +1,19 @@
+{
+  "name": "lifematrix",
+  "version": "1.0.0",
+  "description": "A matrix analyzer that transforms one matrix to another based on rules",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jayseeg/lifeMatrix.git"
+  },
+  "author": "@jayseeg",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jayseeg/lifeMatrix/issues"
+  },
+  "homepage": "https://github.com/jayseeg/lifeMatrix#readme"
+}
