@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/jayseeg/lifeMatrix/issues"
   },
-  "homepage": "https://github.com/jayseeg/lifeMatrix#readme"
+  "homepage": "https://github.com/jayseeg/lifeMatrix#readme",
+  "devDependencies": {
+    "mocha": "^2.2.5",
+    "mocha-traceur": "^2.1.0"
+  }
 }
