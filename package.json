@@ -1,0 +1,24 @@
+{
+  "name": "lifematrix",
+  "version": "1.0.0",
+  "description": "A matrix analyzer that transforms one matrix to another based on rules",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./src/index.js",
+    "test": "mocha --compilers js:mocha-traceur --colors --reporter landing -w ./**/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jayseeg/lifeMatrix.git"
+  },
+  "author": "@jayseeg",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jayseeg/lifeMatrix/issues"
+  },
+  "homepage": "https://github.com/jayseeg/lifeMatrix#readme",
+  "devDependencies": {
+    "mocha": "^2.2.5",
+    "mocha-traceur": "^2.1.0"
+  }
+}
