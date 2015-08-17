@@ -28,16 +28,22 @@ const getNewItemValue = (board, coordinates) => {
   const score = scoreItem(board, coordinates)
   const x = coordinates.x
   const y = coordinates.y
-  switch(true) {
-    case isSurviving(score) && board[y][x] === 1: return 1
-    case isDying(score) && board[y][x] === 1: return 0
-    case isReproducing(score) && board[y][x] === 0: return 1
-    case !isReproducing(score) && board[y][x] === 0: return 0
-    case isOvercrowded(score) && board[y][x] === 1: return 0
-  }
+  if (isSurviving(score) && board[y][x] === 1) return 1
+  if (isDying(score) && board[y][x] === 1) return 0
+  if (isReproducing(score) && board[y][x] === 0) return 1
+  if (!isReproducing(score) && board[y][x] === 0) return 0
+  if (isOvercrowded(score) && board[y][x] === 1) return 0
+}
+
+const boardGenerator = (board) => {
+  return board.map((row, y) => row.map((item, x) => {
+    const coordinates = {x: x, y: y}
+    return getNewItemValue(board, coordinates)
+  }))
 }
 
 module.exports = {
   scoreItem: scoreItem,
   getNewItemValue: getNewItemValue,
+  boardGenerator: boardGenerator,
 }

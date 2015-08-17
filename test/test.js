@@ -3,6 +3,7 @@ const assert = require('assert')
 // local modules
 const scoreItem = require('../src/index').scoreItem
 const getNewItemValue = require('../src/index').getNewItemValue
+const boardGenerator = require('../src/index').boardGenerator
 
 const isSurviving = require('../src/predicates').isSurviving
 const isDying = require('../src/predicates').isDying
@@ -26,12 +27,24 @@ const boards = [
     [0,1,0,0,0,],
     [1,0,0,0,1,],
   ],
+  [
+    [0,0,0,0,0,],
+    [1,0,1,1,1,],
+    [1,1,1,1,1,],
+    [0,1,0,0,0,],
+    [0,0,0,0,0,],
+  ],
 ]
 let board
 
 describe('index.js', () => {
   beforeEach(() => {
     board = boards[1]
+  })
+  describe('#boardGenerator()', () => {
+    it('should return a new board corresponding to a processed board', () => {
+      assert.deepEqual(boards[2], boardGenerator(boards[1]))
+    })
   })
   describe('#scoreItem()', () => {
     it('should return number of neighbors', () => {
