@@ -68,5 +68,7 @@ Will output:
   false ]
 ```
 
+(requires node ^0.12.0 for es2015 features)
+
 ## Test
 ```npm test```
