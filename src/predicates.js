@@ -1,3 +1,5 @@
+'use strict'
+
 const isSurviving = score => score > 1 && score < 4
 
 const isDying = score => score < 2
