@@ -1,3 +1,5 @@
+'use strict'
+
 const scoreCoordinatesOffsets = [
   {
     x: -1,

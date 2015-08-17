@@ -1,9 +1,12 @@
+'use strict'
+
 const assert = require('assert')
 
 // local modules
-const scoreItem = require('../src/index').scoreItem
-const getNewItemValue = require('../src/index').getNewItemValue
-const boardGenerator = require('../src/index').boardGenerator
+const scoreItem = require('../src/gamePlay').scoreItem
+const getNewItemValue = require('../src/gamePlay').getNewItemValue
+const boardGenerator = require('../src/gamePlay').boardGenerator
+const gamePlay = require('../src/gamePlay').gamePlay
 
 const isSurviving = require('../src/predicates').isSurviving
 const isDying = require('../src/predicates').isDying
@@ -34,16 +37,112 @@ const boards = [
     [0,1,0,0,0,],
     [0,0,0,0,0,],
   ],
+  [
+    [0,0,0,1,0,],
+    [1,0,0,0,1,],
+    [1,0,0,0,1,],
+    [1,1,0,1,0,],
+    [0,0,0,0,0,],
+  ],
+  [
+    [0,0,0,0,0,],
+    [0,0,0,1,1,],
+    [1,0,0,1,1,],
+    [1,1,0,0,0,],
+    [0,0,0,0,0,],
+  ],
+  [
+    [0,0,0,0,0,],
+    [0,0,0,1,1,],
+    [1,1,1,1,1,],
+    [1,1,0,0,0,],
+    [0,0,0,0,0,],
+  ],
+  [
+    [0,0,0,0,0,],
+    [0,0,0,0,0,],
+    [1,1,0,1,1,],
+    [0,0,0,0,0,],
+    [0,0,0,0,0,],
+  ],
 ]
+
+const endBoards = [
+  [
+    [0,1,0,0,0,],
+    [1,0,0,1,1,],
+    [1,1,0,0,1,],
+    [0,1,0,0,0,],
+    [1,0,0,0,1,],
+  ],
+  [
+    [0,0,0,0,0,],
+    [1,0,1,1,1,],
+    [1,1,1,1,1,],
+    [0,1,0,0,0,],
+    [0,0,0,0,0,],
+  ],
+  [
+    [0,0,0,1,0,],
+    [1,0,0,0,1,],
+    [1,0,0,0,1,],
+    [1,1,0,1,0,],
+    [0,0,0,0,0,],
+  ],
+  [
+    [0,0,0,0,0,],
+    [0,0,0,1,1,],
+    [1,0,0,1,1,],
+    [1,1,0,0,0,],
+    [0,0,0,0,0,],
+  ],
+  [
+    [0,0,0,0,0,],
+    [0,0,0,1,1,],
+    [1,1,1,1,1,],
+    [1,1,0,0,0,],
+    [0,0,0,0,0,],
+  ],
+  [
+    [0,0,0,0,0,],
+    [0,1,0,0,1,],
+    [1,0,0,0,1,],
+    [1,0,0,1,0,],
+    [0,0,0,0,0,],
+  ],
+  [
+    [0,0,0,0,0,],
+    [0,0,0,0,0,],
+    [1,1,0,1,1,],
+    [0,0,0,0,0,],
+    [0,0,0,0,0,],
+  ],
+  false
+]
+
 let board
 
-describe('index.js', () => {
+describe('gamePlay.js', () => {
   beforeEach(() => {
     board = boards[1]
+  })
+  describe('#gamePlay()', () => {
+    it('should generate original board plus x number of boards', () => {
+      assert.deepEqual([boards[1], boards[2]], gamePlay(boards[1], 1))
+      assert.deepEqual([boards[1], boards[2], boards[3]], gamePlay(boards[1], 2))
+      assert.deepEqual([boards[1], boards[2], boards[3], boards[4]], gamePlay(boards[1], 3))
+      assert.deepEqual([boards[1], boards[2], boards[3], boards[4], boards[5]], gamePlay(boards[1], 4))
+    })
+    it('should halt when all items are dead', () => {
+      assert.deepEqual(endBoards, gamePlay(endBoards[0], 10))
+    })
   })
   describe('#boardGenerator()', () => {
     it('should return a new board corresponding to a processed board', () => {
       assert.deepEqual(boards[2], boardGenerator(boards[1]))
+    })
+    it('should return false if all generated items are dead', () => {
+      assert.equal(false, boardGenerator(boards[6]))
     })
   })
   describe('#scoreItem()', () => {
