@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node ./src/index.js",
-    "test": "mocha --compilers js:mocha-traceur --colors --reporter landing -w ./test/*.js"
+    "test": "mocha --compilers js:mocha-traceur --colors --reporter landing -w ./**/*.js"
   },
   "repository": {
     "type": "git",
